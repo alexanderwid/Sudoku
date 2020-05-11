@@ -102,10 +102,10 @@ function arrayToString(arr) {
 // 3x3 blocks
 function blocks(sud) {
 
-    blocks = [];
+    block = [];
     // This for loop adds all rows to blocks
     for (var i = 0; i < sud.length; i++){
-        blocks.push(sud[i]);
+        block.push(sud[i]);
     }
 
     // This for loop adds all columns to blocks
@@ -114,78 +114,78 @@ function blocks(sud) {
         for (var j = 0; j < sud.length; j++){
             column.push(sud[j][i])
         }
-        blocks.push(column)
+        block.push(column)
     }
  
     // This for loop adds all 3x3 squares to blocks
+    square = [];
     for (var i = 0; i < 3; i++){
-        square = []
-        for var (j = 0; j < 3; j++){
+        for (var j = 0; j < 3; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
+    
+    square = [];
     for (var i = 0; i < 3; i++){
-        square = []
-        for var (j = 3; j < 6; j++){
+        for (var j = 3; j < 6; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
+    
+    square = [];
     for (var i = 0; i < 3; i++){
-        square = []
-        for var (j = 6; j < 9; j++){
+        for (var j = 6; j < 9; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
 
-
+    square = [];
     for (var i = 0; i < 3; i++){
-        square = []
-        for var (j = 0; j < 3; j++){
+        for (var j = 0; j < 3; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
+    square = [];
     for (var i = 0; i < 3; i++){
-        square = []
-        for var (j = 3; j < 6; j++){
+        for (var j = 3; j < 6; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
+    square = [];
     for (var i = 0; i < 3; i++){
-        square = []
-        for var (j = 6; j < 9; j++){
+        for (var j = 6; j < 9; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
 
-
+    square = []
     for (var i = 6; i < 9; i++){
-        square = []
-        for var (j = 0; j < 3; j++){
+        for (var j = 0; j < 3; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
+    square = [];
     for (var i = 6; i < 9; i++){
-        square = []
-        for var (j = 3; j < 6; j++){
+        for (var j = 3; j < 6; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
+    block.push(square);
+    square = []
     for (var i = 6; i < 9; i++){
-        square = []
-        for var (j = 6; j < 9; j++){
+        for (var j = 6; j < 9; j++){
             square.push(sud[i][j])
         }
     }
-    blocks.push(square);
-    return blocks;
+    block.push(square);
+    return block;
 }
 
 
