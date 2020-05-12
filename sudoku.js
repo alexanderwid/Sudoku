@@ -193,21 +193,51 @@ function blocks(sud) {
 // Check that a block is valid (i.e. that it contains no duplicate
 // number 1-9, but multiple 0 is fine).
 function isValidBlock(b) {
-
+    const set = new Set();
+    for (var i of b){
+        if (i != 0){
+            if (set.has(i)){
+                return false;
+            }
+            set.add(i);
+        }
+    }
+    return true;
 }
 
 
 // Check that a sudoku is valid by checking that all of its blocks are
 // valid.
 function isValid(sud) {
-
+    for (var block of blocks(sud)){
+        if (!isValidBlock(block)){
+            return false;
+        }
+    }
+    return true;
 }
 
 
 // Check if a sudoku is solved by checking that there are no zeroes
 // and that it is valid.
 function isSolved(sud) {
-
+    all_blocks = blocks(sud);
+    const allowable_numbers = new Set([1,2,3,4,5,6,7,8,9]);
+    for (var block of all_blocks){ 
+        const seen = new Set();
+        for (var num of block){
+            if (allowable_numbers.has(num)){
+                if (seen.has(num)){
+                    return false;
+                }
+                seen.add(num);
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 
