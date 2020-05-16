@@ -102,10 +102,10 @@ function arrayToString(arr) {
 // 3x3 blocks
 function blocks(sud) {
 
-    block = [];
+    all_blocks = [];
     // This for loop adds all rows to blocks
     for (var i = 0; i < sud.length; i++){
-        block.push(sud[i]);
+        all_blocks.push(sud[i]);
     }
 
     // This for loop adds all columns to blocks
@@ -114,7 +114,7 @@ function blocks(sud) {
         for (var j = 0; j < sud.length; j++){
             column.push(sud[j][i])
         }
-        block.push(column)
+        all_blocks.push(column)
     }
  
     // This for loop adds all 3x3 squares to blocks
@@ -124,7 +124,7 @@ function blocks(sud) {
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
     
     square = [];
     for (var i = 0; i < 3; i++){
@@ -132,7 +132,7 @@ function blocks(sud) {
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
     
     square = [];
     for (var i = 0; i < 3; i++){
@@ -140,7 +140,7 @@ function blocks(sud) {
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
 
     square = [];
     for (var i = 0; i < 3; i++){
@@ -148,21 +148,21 @@ function blocks(sud) {
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
     square = [];
     for (var i = 0; i < 3; i++){
         for (var j = 3; j < 6; j++){
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
     square = [];
     for (var i = 0; i < 3; i++){
         for (var j = 6; j < 9; j++){
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
 
     square = []
     for (var i = 6; i < 9; i++){
@@ -170,22 +170,22 @@ function blocks(sud) {
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
     square = [];
     for (var i = 6; i < 9; i++){
         for (var j = 3; j < 6; j++){
             square.push(sud[i][j])
         }
     }
-    block.push(square);
+    all_blocks.push(square);
     square = []
     for (var i = 6; i < 9; i++){
         for (var j = 6; j < 9; j++){
             square.push(sud[i][j])
         }
     }
-    block.push(square);
-    return block;
+    all_blocks.push(square);
+    return all_blocks;
 }
 
 
@@ -243,13 +243,25 @@ function isSolved(sud) {
 
 // Draw the start sudoku
 function init(sud) {
-
+    for (var i = 0; i < 9; i++){
+        for (var j = 0; j < 9; j++){
+            var element_id = "c" + i + "x" + j;
+            if (sud[i][j] != 0){
+                document.getElementById(element_id).innerHTML = sud[i][j];
+                document.getElementById(element_id).style.backgroundColor = "#b6d9ee";
+            }
+            else{
+                document.getElementById(element_id).onclick = klick(element_id);
+            }
+        }
+    }
 }
 
 
 // What to do when the user clicks on a tile
-function click() {
-
+function klick(id) {
+    var input_num = prompt("Enter number betweeen 1 and 9");
+    document.getElementById(id).innerHTML = input_num;
 }
 
 
