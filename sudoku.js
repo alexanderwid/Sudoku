@@ -246,12 +246,14 @@ function init(sud) {
     for (var i = 0; i < 9; i++){
         for (var j = 0; j < 9; j++){
             var element_id = "c" + i + "x" + j;
+            var cell = document.getElementById(element_id);
             if (sud[i][j] != 0){
-                document.getElementById(element_id).innerHTML = sud[i][j];
-                document.getElementById(element_id).style.backgroundColor = "#b6d9ee";
+                cell.innerHTML = sud[i][j];
+                cell.style.backgroundColor = "#b6d9ee";
+                cell.onclick = null;
             }
             else{
-                document.getElementById(element_id).onclick = klick(element_id);
+                cell.onclick = klick;
             }
         }
     }
@@ -259,13 +261,38 @@ function init(sud) {
 
 
 // What to do when the user clicks on a tile
-function klick(id) {
+function klick() {
+    var cell = this;
     var input_num = prompt("Enter number betweeen 1 and 9");
-    document.getElementById(id).innerHTML = input_num;
+    const allowable_numbers = ["1","2","3","4","5","6","7","8","9"];
+    if (input_num != null){
+        if (allowable_numbers.includes(input_num) || input_num == ""){
+            cell.innerHTML = input_num;
+            if (isSolved(getSudoku())){
+                alert("Sudoku completed!!!");
+            }
+        }
+        else{
+            alert("Invalid input");
+        }
+    }
 }
 
 
 // Fetch the current sudoku
 function getSudoku() {
-
+    var sud = emptySudoku();
+    for (var i = 0; i < 9; i++){
+        for (var j = 0; j < 9; j++){
+            var val = document.getElementById("c" + i + "x" + j).innerHTML;
+            if (["1","2","3","4","5","6","7","8","9"].includes(val)){
+                sud[i][j] = Number(val);
+            }
+            else{
+                sud[i][j] = 0;
+            }
+        }
+    } 
+    return sud;
 }
+
